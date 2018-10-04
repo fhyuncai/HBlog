@@ -97,6 +97,9 @@ define('HBLOG_ADMIN', dirname(__FILE__));
                             <a href="#"><i class="fa fa-send fa-fw"></i> 其他<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
+                                    <a href="cleanup.php">清理优化</a>
+                                </li>
+								<li>
                                     <a href="upgrade.php">在线升级</a>
                                 </li>
                                 <li>

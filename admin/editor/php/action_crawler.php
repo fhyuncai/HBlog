@@ -8,13 +8,13 @@
 set_time_limit(0);
 include("Uploader.class.php");
 
-require("../../../inc.php");
+require("../../../init.php");
 
-$Settings_Query = $mysqli->query("SELECT * FROM scitg_config WHERE id = 0 LIMIT 1");
+$Settings_Query = $mysqli->query("SELECT * FROM hb_config WHERE id = 0 LIMIT 1");
 $Settings_Num = mysqli_num_rows($Settings_Query);
 if($Settings_Num == 1){
 	while ($row = mysqli_fetch_array($Settings_Query)) {
-		$Settings_Siteurl = $row['siteurl'];
+		$Settings_Siteurl = $row['dirname'];
 	}
 }
 

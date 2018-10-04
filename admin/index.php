@@ -19,7 +19,7 @@ $version = explode("|",file_get_contents("../includes/VERSION"));
             </div>
             
             
-                            <div class="col-lg-4">
+                <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bullhorn fa-fw"></i> 官方公告

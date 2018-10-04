@@ -5,6 +5,8 @@
 文件夹：~{$Dir}~<br/>
 模板：~{$Theme}~<br/>
 ICP备案号：~{$ICP}~<br/>
-</br>
+<br/>
 分类名称：~{$CName}~<br/>
 分类别名：~{$CAlias}~<br/>
+<br/>
+~{include_php file="$HBLOG_THEME/article_list.php"}~

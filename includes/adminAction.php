@@ -188,13 +188,12 @@ switch ($action) {
 		  }
 		break;
 	case 'cleantemp':
-		delFileUnderDir("../content/cache/templates_c");
+		delFileUnderDir(HBLOG_ROOT."/content/cache/templates_c");
 		//delFileUnderDir("../content/templates_c");
 		echo "ok|ok";
 		break;
 	case 'cleansql':
-		$ju = "OPTIMIZE TABLE `sd_file`, `sd_policy`, `sd_setting`, `sd_ss`, `sd_sskey`, `sd_user`, `sd_usergroup`, `sd_users`";
-		if(mysqli_query($con,$ju)){
+		if($mysqli->query("OPTIMIZE TABLE `hb_config`, `hb_user`, `hb_group`, `hb_category`, `hb_article`")){
 			echo "ok|ok";
 		}else{
 			echo "bad|无法执行";

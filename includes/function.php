@@ -110,9 +110,29 @@ function GetCategory($id,$action){
 	$mysqli->close();
 }
 
+function GetArticleList($cateid){
+	require("mysqli.php");
+	if($cateid === 0){
+		$sql = "SELECT * FROM hb_article";
+	}else{
+		$sql = "SELECT * FROM hb_article WHERE category = '".GetCategory($cateid,2)[0]."'";
+	}
+	$Mysql_Query = $mysqli->query($sql);
+	$Mysql_Num = mysqli_num_rows($Mysql_Query);
+	if($Mysql_Num >= 1){
+		while ($row = mysqli_fetch_array($Mysql_Query)) {
+			$Cate = $Cate.'|'.$row['id'].'~~'.$row['title'].'~~'.$row['content'].'~~'.$row['category'].'~~'.$row['date'].'~~'.$row['userid'];
+		}
+		return $Mysql_Num.$Cate;
+	}else{
+		return "Error";
+	}
+	$mysqli->close();
+}
+
 function GetArticle($articleid){
 	require("mysqli.php");
-	$Mysql_Query = $mysqli->query("SELECT * FROM hb_article WHERE id = {$articleid} LIMIT 1");
+	$Mysql_Query = $mysqli->query("SELECT * FROM hb_article WHERE id = '{$articleid}' LIMIT 1");
 	$Mysql_Num = mysqli_num_rows($Mysql_Query);
 	if($Mysql_Num == 1){
 		while ($row = mysqli_fetch_array($Mysql_Query)) {
@@ -171,25 +191,26 @@ function inject_check($Sql_Str) {
 	}
 }
 
-function delFileUnderDir( $dirName )  {  
-	if ( $handle = opendir( "$dirName" ) ) {  
-	   while ( false !== ( $item = readdir( $handle ) ) ) {  
-		   if ( $item != "." && $item != ".." ) {  
-			   if ( is_dir( "$dirName/$item" ) ) {  
-			        delFileUnderDir( "$dirName/$item" );  
-			   } else {  
-				   if( unlink( "$dirName/$item" ) ){
-				   		return true;
-				   }else{
-				   		return false;
-				   }
-			   }  
-		   }  
-	   }  
-	   closedir( $handle );  
+function delFileUnderDir($dirName){  
+	if($handle = opendir("$dirName")){
+		while(false !== ($item = readdir($handle))){
+			if($item != "." && $item != ".."){
+				if(is_dir("$dirName/$item")){
+					delFileUnderDir("$dirName/$item");
+				}else{
+					if(unlink("$dirName/$item")){
+						delFileUnderDir($dirName);
+						return true;
+					}else{
+						return false;
+					}
+				}
+			}
+		}
+		closedir($handle);
 	}else{
 		return false;
-	}  
+	}
 }
 
 function get_zip_originalsize($filename, $path) {

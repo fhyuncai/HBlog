@@ -5,3 +5,5 @@
 文件夹：~{$Dir}~<br/>
 模板：~{$Theme}~<br/>
 ICP备案号：~{$ICP}~<br/>
+<br/>
+~{include_php file="$HBLOG_THEME/article_list.php"}~
