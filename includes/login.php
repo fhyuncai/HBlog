@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("../inc.php");
+require("../init.php");
 
 $pw = $_POST["password"];
 $um = $_POST["username"];

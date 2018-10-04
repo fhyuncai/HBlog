@@ -1,6 +1,4 @@
 <?php
-require("../inc.php");
-require("../includes/usercheck.php");
 $title="在线升级";
 require_once("common/header.php");
 

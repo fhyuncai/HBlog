@@ -1,6 +1,4 @@
 <?php
-require("../inc.php");
-require("../includes/usercheck.php");
 $title = "关于";
 require_once("common/header.php");
 

@@ -148,7 +148,7 @@ function GetArticle($articleid){
 /** 后台专用函数 **/
 function user_shell($uid,$shell){
 	require("mysqli.php");
-	$query = @$mysqli->query("select * from hb_user where id = {$uid} limit 1");
+	$query = @$mysqli->query("select * from hb_user where id = '{$uid}' limit 1");
 	while ($row = mysqli_fetch_array($query)) {
 		$username = $row['user'];
 		$password = $row['pass'];
